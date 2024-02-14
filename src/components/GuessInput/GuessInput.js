@@ -9,25 +9,28 @@ function GuessInput() {
    * @param {Event} e - the event object
    * @return {void}
    */
-  function handleGuess(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    if (guess.length !== 5) {
-      alert('Guess must be 5 characters long!!1');
-      return;
-    }
-    const transformedGuess = guess.toUpperCase();
-    console.log(transformedGuess);
+    console.log(guess);
     setGuess('');
   }
 
   return (
-    <form className="guess-input-wrapper" onSubmit={handleGuess}>
+    <form className="guess-input-wrapper" onSubmit={handleSubmit}>
       <label htmlFor="guess-input">Enter guess:</label>
       <input
         value={guess}
-        onChange={(e) => setGuess(e.target.value)}
+        onChange={(e) => {
+          const transformedGuess = e.target.value.toUpperCase();
+          setGuess(transformedGuess);
+        }}
         id="guess-input"
+        pattern="[a-zA-Z]{5}"
+        maxLength="5"
+        minLength="5"
+        required
         type="text"
+        title="5 letter word"
       />
     </form>
   );
