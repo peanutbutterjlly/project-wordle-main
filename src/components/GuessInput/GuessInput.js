@@ -1,8 +1,7 @@
 import React from 'react';
 
-function GuessInput() {
-  const [guess, setGuess] = React.useState('');
-
+function GuessInput({ handleSubmitGuesses }) {
+  const [guessTry, setGuessTry] = React.useState('');
   /**
    * Handles the user's guess input.
    *
@@ -11,18 +10,18 @@ function GuessInput() {
    */
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(guess);
-    setGuess('');
+    handleSubmitGuesses(guessTry);
+    setGuessTry('');
   }
 
   return (
     <form className="guess-input-wrapper" onSubmit={handleSubmit}>
       <label htmlFor="guess-input">Enter guess:</label>
       <input
-        value={guess}
+        value={guessTry}
         onChange={(e) => {
           const transformedGuess = e.target.value.toUpperCase();
-          setGuess(transformedGuess);
+          setGuessTry(transformedGuess);
         }}
         id="guess-input"
         pattern="[a-zA-Z]{5}"
