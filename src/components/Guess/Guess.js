@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Guess({ guess }) {
+function Guess({ value }) {
   return (
     <p className="guess">
       <span className="cell">H</span>
