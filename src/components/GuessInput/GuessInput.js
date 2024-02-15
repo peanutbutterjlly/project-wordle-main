@@ -2,6 +2,7 @@ import React from 'react';
 
 function GuessInput({ handleSubmitGuesses }) {
   const [guessTry, setGuessTry] = React.useState('');
+  
   /**
    * Handles the user's guess input.
    *
